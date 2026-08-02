@@ -2,30 +2,42 @@
 KiCad PCB design, schematic, and design files for a TPS54332-based step-down buck converter circuit.
 # ⚡ TPS54332 Step-Down Buck Converter Board
 
-This repository contains the complete KiCad hardware design files, schematic, BOM, and PCB layout for a high-efficiency DC-DC step-down buck converter based on the **TI TPS54332** IC.
+This repository contains the complete KiCad design files, Gerber output files, datasheets, interactive BOM, 3D STEP models, and schematic for a compact, high-efficiency Step-Down (Buck) DC-DC Converter module based on the **Texas Instruments TPS54332** IC.
 
 ---
 
 ## 📌 Project Overview
-* **Input Voltage (Vin):** 5V – 15V DC
-* **Output Voltage (Vout):** ~2.5V (Adjustable via RV1 potentiometer)
-* **Maximum Output Current (Iout):** 3.5A
+* **IC Model:** Texas Instruments TPS54332DDAR
+* **Input Voltage Range:** 3.5V to 28V
+* **Output Voltage:** Adjustable (Configured via feedback resistors)
+* **Continuous Output Current:** Up to 3.5A
+* **Switching Frequency:** 3.5MHz
 * **Design Tool:** KiCad 10.0
 
 ---
 
 ## 🛠️ Key Features
-* **Reverse Polarity Protection:** P-Channel MOSFET (Q1) & Zener Diode (D2) low-loss active protection circuit.
-* **Thermal & EMI Performance:** Optimized PCB layout with via stitching under the Exposed Pad (EPAD) and wide copper pours for high-current paths.
-* **Compact Footprint:** High-frequency switching topology allowing small surface-mount inductors and ceramic capacitors.
+* **High Efficiency:** Integrated 80mΩ high-side MOSFET for efficient power conversion.
+* **Adjustable Output:** Voltage divider network with precision resistors and potentiometer options.
+* **Protection Features:** Internal eco-mode, pulse-by-pulse current limiting, thermal shutdown, and overvoltage protection.
+* **Optimized Layout:** Low-ESR ceramic capacitor placement and solid ground plane routing for minimal output ripple and noise.
 
 ---
 
-## 📁 Repository Files
-* `2026-07-27_B-TPS54332-BRK_R0.1.zip` - Complete project archive containing KiCad schematic, PCB design, BOM, and Gerber files.
+## 📐 Design Calculations & Output Voltage Setup
+
+The output voltage ($V_{out}$) of the TPS54332 is configured using the feedback resistor divider ($R_1$ and $R_2$) connected to the **VSENSE** pin.
+
+### Formula:
+$$V_{out} = V_{ref} \times \left(1 + \frac{R_1}{R_2}\right)$$
+
+Where:
+* $V_{ref} = 0.8 \text{ V}$ (Internal Reference Voltage of TPS54332)
+* $R_1$: Top feedback resistor
+* $R_2$: Bottom feedback resistor / potentiometer
 
 ---
 
-## 👤 Designer Info
-* **Designer:** Emirhan Kandal
-* **LinkedIn:** [Emirhan Kandal Profile](https://www.linkedin.com/in/emirhan-kandal-144596307/)
+## 📁 Repository Structure
+```text
+├── 2026-07-27_B-TPS54332-BRK_R0.1.zip   # Complete project package containing all design & output files
